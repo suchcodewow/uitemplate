@@ -1,27 +1,35 @@
 services:
   maindb:
-    image: mongo:latest
+    image: postgres
     container_name: maindb
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      POSTGRES_PASSWORD: "password"
     ports:
-      - 27017:27017
+      - 5432:5432
+#   maindb:
+#     image: mongo:latest
+#     container_name: maindb
+#     restart: always
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: password
+#     ports:
+#       - 27017:27017
 
-  # (OPTIONAL) mongo express
-  #CMD -> http://localhost:8081
-  mongo-express:
-    image: mongo-express
-    container_name: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_OPTIONS_EDITORTHEME: "ambiance"
-      ME_CONFIG_MONGODB_SERVER: "maindb"
-      ME_CONFIG_BASICAUTH_USERNAME: "root"
-      ME_CONFIG_BASICAUTH_PASSWORD: "password"
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+# (OPTIONAL) mongo express
+#CMD -> http://localhost:8081
+# mongo-express:
+#   image: mongo-express
+#   container_name: mongo-express
+#   restart: always
+#   ports:
+#     - 8081:8081
+#   environment:
+#     ME_CONFIG_OPTIONS_EDITORTHEME: "ambiance"
+#     ME_CONFIG_MONGODB_SERVER: "maindb"
+#     ME_CONFIG_BASICAUTH_USERNAME: "root"
+#     ME_CONFIG_BASICAUTH_PASSWORD: "password"
+#     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#     ME_CONFIG_MONGODB_ADMINPASSWORD: password
+#     ME_CONFIG_MONGODB_ENABLE_ADMIN: true
