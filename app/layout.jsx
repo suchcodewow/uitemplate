@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 // evaluate: radix-ui
 import "@/globals.css";
-import "@radix-ui/themes/styles.css";
+// import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import Header from "@/components/Header";
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
       // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Theme accentColor="orange">
+        <Theme accentColor="orange" radius="medium">
           <Header />
           {children}
         </Theme>

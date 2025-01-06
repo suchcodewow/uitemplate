@@ -19,7 +19,19 @@ export default function UserSettings({ user }) {
         <DropdownMenu.Item>
           <Link href="/settings">settings</Link>
         </DropdownMenu.Item>
-        <DropdownMenu.Separator />
+
+        <DropdownMenu.Item>
+          <form
+            action={async () => {
+              "use server";
+              await signOut();
+            }}
+          >
+            <Button type="submit">
+              <LogOut className="h-1 w-1" /> Sign Out
+            </Button>
+          </form>
+        </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );

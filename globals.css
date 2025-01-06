@@ -1,8 +1,4 @@
-/* @tailwind base;
+@import "tailwindcss/base";
+@import "@radix-ui/themes/styles.css";
 @tailwind components;
-@tailwind utilities; */
-
-body {
-  padding: 0px;
-  margin: 0px;
-}
+@tailwind utilities;
