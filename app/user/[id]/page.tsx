@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const getUser = cache(async (id: string) => {
@@ -13,6 +13,13 @@ const getUser = cache(async (id: string) => {
     select: { id: true, name: true, image: true, createdAt: true },
   });
 });
+// async function getUser({ params }: PageProps) {
+//   const id = (await params).id;
+//   return prisma.user.findUnique({
+//     where: { id },
+//     select: { id: true, name: true, image: true, createdAt: true },
+//   });
+// }
 
 export async function generateStaticParams() {
   const allUsers = await prisma.user.findMany();
@@ -20,7 +27,8 @@ export async function generateStaticParams() {
   return allUsers.map(({ id }) => ({ id }));
 }
 
-export async function generateMetadata({ params: { id } }: PageProps) {
+export async function generateMetadata({ params }: PageProps) {
+  const id = (await params).id;
   const user = await getUser(id);
 
   return {
@@ -28,7 +36,8 @@ export async function generateMetadata({ params: { id } }: PageProps) {
   };
 }
 
-export default async function Page({ params: { id } }: PageProps) {
+export default async function Page({ params }: PageProps) {
+  const id = (await params).id;
   // Artificial delay to showcase static caching
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -38,6 +47,15 @@ export default async function Page({ params: { id } }: PageProps) {
 
   return (
     <div className="mx-3 my-10 flex flex-col items-center gap-3">
+      {user.image && (
+        <Image
+          src={user.image}
+          width={100}
+          alt="User profile picture"
+          height={100}
+          className="rounded-full"
+        />
+      )}
       <h1 className="text-center text-xl font-bold">
         {user?.name || `User ${id}`}
       </h1>

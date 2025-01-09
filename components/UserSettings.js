@@ -1,12 +1,12 @@
 import avatarPlaceholder from "@/assets/images/avatar_placeholder.png";
-import { LogOut, Settings } from "lucide-react";
+import { Lock, LogOut, Settings } from "lucide-react";
 import { User } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, DropdownMenu } from "@radix-ui/themes";
 import { signOut } from "@/auth";
 
-export default function UserSettings({ user }) {
+export default function UserButton({ user }) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
@@ -16,10 +16,19 @@ export default function UserSettings({ user }) {
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content size="1">
-        <DropdownMenu.Item>
-          <Link href="/settings">settings</Link>
-        </DropdownMenu.Item>
-
+        <DropdownMenu.Group>
+          <DropdownMenu.Item>
+            <Link href="/settings">settings</Link>
+          </DropdownMenu.Item>
+          {user.role === "admin" && (
+            <DropdownMenu.Item asChild>
+              <Link href="/admin">
+                <Lock className="mr-2 h-4 w-4" />
+                Admin
+              </Link>
+            </DropdownMenu.Item>
+          )}
+        </DropdownMenu.Group>
         <DropdownMenu.Item>
           <form
             action={async () => {

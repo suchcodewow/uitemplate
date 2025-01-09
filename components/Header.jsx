@@ -1,9 +1,10 @@
 import { Flex, Text, Button, TabNav, Container } from "@radix-ui/themes";
 import { auth, signIn } from "@/auth";
 import UserSettings from "@/components/UserSettings";
+import getSession from "@/lib/getSession";
 
 export default async function Header() {
-  const session = await auth();
+  const session = await getSession();
   const user = session?.user;
   return (
     <Container size="3" p="2">
