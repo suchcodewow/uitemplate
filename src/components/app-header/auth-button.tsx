@@ -58,15 +58,7 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
   }
 
   return (
-    <Button
-      onPress={() =>
-        signIn("google", {
-          callbackUrl: "/profile",
-        })
-      }
-      color="danger"
-      variant="ghost"
-    >
+    <Button onPress={() => signIn()} color="danger" variant="ghost">
       <IconBrandGoogle />
       Sign In
     </Button>
