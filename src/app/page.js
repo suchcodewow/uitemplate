@@ -1,12 +1,18 @@
 import prisma from "@/lib/prisma";
-import { Box, Flex, Table } from "@radix-ui/themes";
+import { Button } from "@nextui-org/button";
+import { Card, CardBody } from "@nextui-org/card";
 import Link from "next/link";
 
 export default async function Home() {
   const users = await prisma.user.findMany();
   return (
-    <Flex direction="column">
-      <Box>hello</Box>
+    <div>
+      <Button>le button</Button>
+      <Card>
+        <CardBody>
+          <p>Make beautiful websites regardless of your design experience.</p>
+        </CardBody>
+      </Card>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
@@ -16,6 +22,6 @@ export default async function Home() {
           </li>
         ))}
       </ul>
-    </Flex>
+    </div>
   );
 }

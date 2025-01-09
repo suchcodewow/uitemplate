@@ -1,7 +1,7 @@
-import { Flex, Text, Button, TabNav, Container } from "@radix-ui/themes";
-import { auth, signIn } from "@/auth";
-import UserSettings from "@/components/UserSettings";
+import { signIn } from "@/auth";
+import UserSettings from "@/components/userSettings";
 import getSession from "@/lib/getSession";
+import { Button, Container, Flex, TabNav } from "@radix-ui/themes";
 
 export default async function Header() {
   const session = await getSession();

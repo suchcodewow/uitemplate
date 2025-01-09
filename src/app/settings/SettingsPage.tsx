@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@radix-ui/themes";
 import {
   Form,
   FormControl,
@@ -14,9 +13,10 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { UpdateProfileValues, updateProfileSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@radix-ui/themes";
+import { User } from "next-auth";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "./actions";
-import { User } from "next-auth";
 
 interface SettingsPageProps {
   user: User;
