@@ -44,10 +44,16 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
             src={data.user?.image || ""}
           />
         </DropdownTrigger>
-        <DropdownMenu aria-label="Profile Actions" variant="flat">
+        <DropdownMenu
+          disabledKeys={["profile"]}
+          aria-label="Profile Actions"
+          variant="flat"
+        >
           <DropdownItem key="profile" className="h-14 gap-2">
-            <p className="font-semibold">Signed in as</p>
-            <p className="font-semibold">{data.user?.email}</p>
+            {data.user?.email}
+          </DropdownItem>
+          <DropdownItem key="settings" color="danger" href="/settings">
+            My Settings
           </DropdownItem>
           <DropdownItem key="sign-out" color="danger" onPress={signOutClick}>
             Sign Out

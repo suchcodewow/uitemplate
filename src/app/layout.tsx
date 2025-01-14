@@ -1,6 +1,7 @@
 import AppHeader from "@/components/app-header";
 import Providers from "@/components/providers";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="h-screen w-screen">
         <Providers>
           <AppHeader />
           <main className="flex-grow overflow-auto bg-[url(/light-bg.svg)] bg-cover dark:bg-[url(/dark-bg.svg)]">
-            {children}
+            <Suspense>{children}</Suspense>
           </main>
         </Providers>
       </body>
