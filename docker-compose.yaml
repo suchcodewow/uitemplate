@@ -8,6 +8,8 @@ services:
       POSTGRES_USER: "admin"
     ports:
       - 5432:5432
+    volumes:
+      - ./docker-data/db:/var/lib/postgresql/data
 #   maindb:
 #     image: mongo:latest
 #     container_name: maindb
