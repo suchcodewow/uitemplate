@@ -21,6 +21,7 @@
     "clsx": "^2.1.1",
     "eslint-plugin-check-file": "^2.8.0",
     "framer-motion": "^11.16.3",
+    "ldrs": "^1.0.2",
     "lucide-react": "^0.469.0",
     "next": "15.1.2",
     "next-auth": "^5.0.0-beta.25",

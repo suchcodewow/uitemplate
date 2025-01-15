@@ -1,14 +1,10 @@
 "use client";
-import { CircularProgress } from "@nextui-org/react";
+import { Spinner } from "@nextui-org/react";
 
-export default function Loading() {
+export default function Loader() {
   return (
-    <CircularProgress
-      className="mx-auto"
-      classNames={{
-        svg: "w-36 h-36",
-      }}
-      aria-label="Loading page..."
-    />
+    <div className="m-2 mx-auto">
+      <Spinner className="m-4 mx-auto" />
+    </div>
   );
 }
