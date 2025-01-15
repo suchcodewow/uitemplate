@@ -1,3 +1,5 @@
+//client-side providers for NextUI, Session, and theme
+
 "use client";
 
 import { useRouter } from "next/navigation";

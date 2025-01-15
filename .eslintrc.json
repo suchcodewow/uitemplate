@@ -5,20 +5,16 @@
     "check-file/filename-naming-convention": [
       "error",
       {
-        "**/*.{jsx,tsx}": "CAMEL_CASE",
-        "**/*.{js,ts}": "KEBAB_CASE"
+        "**/*.{ts,tsx}": "KEBAB_CASE"
       },
       {
-        // ignore the middle extensions of the filename to support filename like bable.config.js or smoke.spec.ts
         "ignoreMiddleExtensions": true
       }
     ],
     "check-file/folder-naming-convention": [
       "error",
       {
-        // all folders within src (except __tests__)should be named in kebab-case
-        "src/**/": "CAMEL_CASE",
-        "mocks/*/": "KEBAB_CASE"
+        "src/**/!^[.*": "KEBAB_CASE"
       }
     ]
   }

@@ -12,14 +12,15 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  role          String?
-  accounts      Account[]
-  sessions      Session[]
+  id               String             @id @default(cuid())
+  name             String?
+  email            String             @unique
+  emailVerified    DateTime?
+  image            String?
+  role             String?
+  accounts         Account[]
+  sessions         Session[]
+  guestbookentries GuestbookEntries[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -68,4 +69,12 @@ model VerificationToken {
 
   @@id([identifier, token])
   @@map("verification_tokens")
+}
+
+model GuestbookEntries {
+  messageId Int      @unique @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message   String
+  createdAt DateTime @default(now())
 }

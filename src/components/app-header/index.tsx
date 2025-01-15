@@ -34,18 +34,12 @@ export default function AppHeader() {
     },
   ];
 
-  // if (status === "authenticated") {
-  //   menuItems.push(
-  //     {
-  //       label: "Settings",
-  //       href: "/settings",
-  //     },
-  //     {
-  //       label: "Guestbook",
-  //       href: "/guestbook",
-  //     },
-  //   );
-  // }
+  if (status === "authenticated") {
+    menuItems.push({
+      label: "Guestbook",
+      href: "/guestbook",
+    });
+  }
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>

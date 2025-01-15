@@ -1,3 +1,5 @@
+// Get current system light/dark setting
+
 import { Dispatch, SetStateAction, useMemo } from "react";
 
 import { useTheme } from "next-themes";
