@@ -1,18 +1,14 @@
+import CheckAuth from "@/lib/getSession";
 import { Card, CardBody } from "@nextui-org/card";
-import { Textarea } from "@nextui-org/input";
+import GuestbookClient from "./client";
 
-export default function GuestBook() {
+export default async function GuestBook() {
+  const session = await CheckAuth();
   return (
     <Card className="mx-auto mt-4 max-w-lg">
       <CardBody>
         <h1 className="text-center text-5xl">Welcome to the Guest Book</h1>
-        <form className="mt-4 flex flex-col gap-2">
-          <Textarea
-            label="message"
-            placeholder="Enter your message"
-            className="w-full"
-          ></Textarea>
-        </form>
+        <GuestbookClient />
       </CardBody>
     </Card>
   );
