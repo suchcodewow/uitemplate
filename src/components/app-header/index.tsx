@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
+import { Link } from "@nextui-org/link";
 import {
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -11,7 +11,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/react";
+} from "@nextui-org/navbar";
 import { IconPackage } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 
@@ -37,7 +37,7 @@ export default function AppHeader() {
   }
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -45,7 +45,7 @@ export default function AppHeader() {
         />
         <NavbarBrand>
           <IconPackage />
-          <p className="font-bold text-inherit">Next.js Starter</p>
+          <p className="font-bold text-inherit">SuchCodeWow ui</p>
         </NavbarBrand>
       </NavbarContent>
 

@@ -13,13 +13,6 @@ const getUser = cache(async (id: string) => {
     select: { id: true, name: true, image: true, createdAt: true },
   });
 });
-// async function getUser({ params }: PageProps) {
-//   const id = (await params).id;
-//   return prisma.user.findUnique({
-//     where: { id },
-//     select: { id: true, name: true, image: true, createdAt: true },
-//   });
-// }
 
 export async function generateStaticParams() {
   const allUsers = await prisma.user.findMany();
@@ -39,7 +32,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function Page({ params }: PageProps) {
   const id = (await params).id;
   // Artificial delay to showcase static caching
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const user = await getUser(id);
 

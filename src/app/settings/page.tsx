@@ -1,14 +1,15 @@
-import getSession from "@/lib/getSession";
+import getSession from "@/lib/get-session";
+import { Card, CardBody } from "@nextui-org/card";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import SettingsPage from "./client";
+import SettingsClient from "./client";
 
 export const metadata: Metadata = {
   title: "Settings",
 };
 
 export default async function Page() {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getSession();
   const user = session?.user;
 
@@ -16,5 +17,12 @@ export default async function Page() {
     redirect("/api/auth/signin?callbackUrl=/settings");
   }
 
-  return <SettingsPage user={user} />;
+  return (
+    <Card className="mx-auto mt-4 max-w-2xl">
+      <CardBody>
+        <h1 className="text-center text-5xl">My Settings</h1>
+        <SettingsClient user={user} />
+      </CardBody>
+    </Card>
+  );
 }

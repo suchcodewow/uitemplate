@@ -3,11 +3,15 @@ import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: "class",
-  plugins: [nextui(), require("tailwindcss-animate")],
+  plugins: [nextui()],
   content: [
-    "./src/**/*.{ts,tsx,js,jsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{ts,tsx,js,jsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  theme: {
+    extend: {},
+  },
 } satisfies Config;
 
 export default config;

@@ -1,75 +1,56 @@
 "use client";
 
-// import {
-//   Form,
-//   FormControl,
-//   FormDescription,
-//   FormField,
-//   FormItem,
-//   FormLabel,
-//   FormMessage,
-// } from "@/components/ui/form";
-// import { Input } from "@/components/ui/input";
-// import { useToast } from "@/components/ui/use-toast";
-import { UpdateProfileValues, updateProfileSchema } from "@/lib/validation";
-import { zodResolver } from "@hookform/resolvers/zod";
-// import { Button } from "@radix-ui/themes";
+import { ProfileSchema } from "@/lib/validation";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { Form } from "@nextui-org/form";
+import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
 import { User } from "next-auth";
-import { useForm } from "react-hook-form";
-import { updateProfile } from "./actions";
+import { useActionState } from "react";
+import { UpdateProfile } from "./actions";
 
-interface SettingsPageProps {
+interface SettingsClientProps {
   user: User;
 }
 
-export default function SettingsPage({ user }: SettingsPageProps) {
-  // const { toast } = useToast();
-
-  const form = useForm<UpdateProfileValues>({
-    resolver: zodResolver(updateProfileSchema),
-    defaultValues: { name: user.name || "" },
+export default function SettingsClient({ user }: SettingsClientProps) {
+  const [lastResult, action] = useActionState(UpdateProfile, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+    defaultValue: { ...user },
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: ProfileSchema });
+    },
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
   });
-
-  async function onSubmit(data: UpdateProfileValues) {
-    try {
-      await updateProfile(data);
-      // toast({ description: "Profile updated." });
-    } catch (error) {
-      // toast({
-      //   variant: "destructive",
-      //   description: "An error occurred. Please try again.",
-      // });
-    }
-  }
 
   return (
     <main className="px-3 py-10">
       <section className="mx-auto max-w-7xl space-y-6">
         <h1 className="text-3xl font-bold">Settings</h1>
 
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="max-w-sm space-y-2.5"
+        <Form
+          className="mt-4 flex flex-col gap-2"
+          id={form.id}
+          onSubmit={form.onSubmit}
+          action={action}
         >
-          {/* <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter a username" {...field} />
-                </FormControl>
-                <FormDescription>Your public username</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            Submit
-          </Button>
-        </form>
+          <Input
+            label="name"
+            placeholder="Your Name"
+            key={fields.name.key}
+            name={fields.name.name}
+            isInvalid={!fields.name.valid}
+            errorMessage={fields.name.errors}
+            defaultValue={fields.name.initialValue}
+          ></Input>
+          <div className="flex w-full justify-end gap-2">
+            <Button type="reset">Reset</Button>
+            <Button type="submit">Update</Button>
+          </div>
+        </Form>
       </section>
     </main>
   );
