@@ -1,7 +1,9 @@
+import { Card, CardBody } from "@nextui-org/card";
+
 export default async function Home() {
   return (
-    <div className="h-[2000px] border-2 border-cyan-500 text-5xl font-bold">
-      hi mom
-    </div>
+    <Card className="mx-auto mt-2 min-h-40 max-w-3xl">
+      <CardBody>SuchCodeWow UI Template</CardBody>
+    </Card>
   );
 }

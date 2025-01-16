@@ -16,10 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="h-screen w-screen bg-[url(/light-bg.svg)] bg-cover dark:bg-[url(/dark-bg.svg)]">
+      <body className="min-h-screen w-screen overflow-auto bg-[url(/light-bg.svg)] bg-cover dark:bg-[url(/dark-bg.svg)]">
         <Providers>
           <AppHeader />
-          <main className="flex-grow overflow-auto">
+          <main className="flex-grow">
             <Suspense>{children}</Suspense>
           </main>
         </Providers>

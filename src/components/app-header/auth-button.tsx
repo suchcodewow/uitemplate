@@ -26,7 +26,7 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
       });
     if (minimal) {
       return (
-        <Button onPress={signOutClick} color="danger" variant="ghost">
+        <Button onPress={signOutClick} color="primary" variant="ghost">
           <IconBrandGoogle />
           Sign Out
         </Button>
@@ -49,13 +49,11 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
           aria-label="Profile Actions"
           variant="flat"
         >
-          <DropdownItem key="profile" className="h-14 gap-2">
-            {data.user?.email}
-          </DropdownItem>
-          <DropdownItem key="settings" color="danger" href="/settings">
+          <DropdownItem key="profile">{data.user?.email}</DropdownItem>
+          <DropdownItem key="settings" href="/settings">
             My Settings
           </DropdownItem>
-          <DropdownItem key="sign-out" color="danger" onPress={signOutClick}>
+          <DropdownItem key="sign-out" onPress={signOutClick}>
             Sign Out
           </DropdownItem>
         </DropdownMenu>
@@ -64,7 +62,7 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
   }
 
   return (
-    <Button onPress={() => signIn()} color="danger" variant="ghost">
+    <Button onPress={() => signIn()} color="primary" variant="ghost">
       <IconBrandGoogle />
       Sign In
     </Button>
