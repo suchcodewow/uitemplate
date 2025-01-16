@@ -3,9 +3,9 @@
 import { GuestBookSchema } from "@/lib/validation";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { Button } from "@nextui-org/button";
-import { Form } from "@nextui-org/form";
-import { Textarea } from "@nextui-org/input";
+import { Button } from "@heroui/button";
+import { Form } from "@heroui/form";
+import { Textarea } from "@heroui/input";
 import { useActionState } from "react";
 import { CreateGuestBookEntry } from "./actions";
 

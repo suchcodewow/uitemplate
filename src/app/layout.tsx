@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ui",
-  description: "Next.js UI",
+  description: "SuchCodeWow UI",
 };
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-import { Card, CardBody } from "@nextui-org/card";
+import { Card, CardBody } from "@heroui/card";
 import { IconFileUnknown } from "@tabler/icons-react";
 
 export default function NotFound() {

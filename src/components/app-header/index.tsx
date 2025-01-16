@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Link } from "@nextui-org/link";
+import { Link } from "@heroui/link";
 import {
   Navbar,
   NavbarBrand,
@@ -11,7 +11,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/navbar";
+} from "@heroui/navbar";
 import { IconPackage } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 

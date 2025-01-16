@@ -3,9 +3,9 @@
 import { ProfileSchema } from "@/lib/validation";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { Form } from "@nextui-org/form";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/react";
+import { Form } from "@heroui/form";
+import { Input } from "@heroui/input";
+import { Button } from "@heroui/react";
 import { User } from "next-auth";
 import { useActionState } from "react";
 import { UpdateProfile } from "./actions";

@@ -8,7 +8,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { IconBrandGoogle } from "@tabler/icons-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 

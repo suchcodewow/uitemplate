@@ -1,5 +1,5 @@
 import getSession from "@/lib/get-session";
-import { Card, CardBody } from "@nextui-org/card";
+import { Card, CardBody } from "@heroui/card";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import SettingsClient from "./client";
