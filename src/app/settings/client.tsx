@@ -16,6 +16,7 @@ interface SettingsClientProps {
 
 export default function SettingsClient({ user }: SettingsClientProps) {
   const [lastResult, action] = useActionState(UpdateProfile, undefined);
+  console.log("last result: ", lastResult);
   const [form, fields] = useForm({
     lastResult,
     defaultValue: { ...user },

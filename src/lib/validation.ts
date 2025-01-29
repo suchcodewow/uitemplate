@@ -1,3 +1,5 @@
+// Validation schemas.  Based on prisma structures
+
 import { z } from "zod";
 
 export const ProfileSchema = z.object({

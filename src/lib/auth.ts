@@ -1,4 +1,4 @@
-// Configures authentication options using next-auth
+// Configures next auth. Authentication mechanisms and storage (prisma)
 
 import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";

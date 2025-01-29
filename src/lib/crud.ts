@@ -1,3 +1,5 @@
+// Basic Database transactions
+
 import prisma from "./prisma";
 
 export async function GetGuestbookEntries({

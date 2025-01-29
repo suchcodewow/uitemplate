@@ -21,10 +21,6 @@ export default async function GuestBook(props: {
     limit,
     search,
   });
-  // const entries = await prisma.guestbookEntries.findMany({
-  //   orderBy: { createdAt: "desc" },
-  //   include: { user: true },
-  // });
   return (
     <Card className="mx-auto mt-4 max-w-lg">
       <CardBody>

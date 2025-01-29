@@ -24,6 +24,7 @@ export async function UpdateProfile(prevState: unknown, formData: FormData) {
     where: { id: userId },
     data: { name: submission.value.name },
   });
+
   revalidatePath("/settings");
   redirect("/settings");
 }
