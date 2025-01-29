@@ -22,12 +22,7 @@ export default function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { status } = useSession();
 
-  const menuItems = [
-    {
-      label: "Home",
-      href: "/",
-    },
-  ];
+  const menuItems = [];
 
   if (status === "authenticated") {
     menuItems.push({
@@ -44,8 +39,10 @@ export default function AppHeader() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <IconPackage />
-          <p className="font-bold text-inherit">SuchCodeWow ui</p>
+          <Link className="font-bold text-inherit" href="/">
+            <IconPackage />
+            SuchCodeWow ui
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -59,16 +56,12 @@ export default function AppHeader() {
         ))}
 
         <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem>
-
-        <NavbarItem>
           <AuthButton minimal={false} />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         <NavbarMenuItem>
-          <ThemeSwitcher showLabel />
+          <ThemeSwitcher />
         </NavbarMenuItem>
 
         {menuItems.map((item, index) => (
